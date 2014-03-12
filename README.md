@@ -3,4 +3,4 @@ TV-Tracker
 
 Group project for CS320
 
-#TODO
+TODO: Write readme
