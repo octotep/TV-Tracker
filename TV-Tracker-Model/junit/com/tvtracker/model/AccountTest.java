@@ -17,7 +17,7 @@ public class AccountTest {
 	
 	@Before
 	public void setup() {
-		austin = new Account();
+		austin = new Account(null, null);
 		austin.setMediaListProgress(testProgress);
 	}
 	

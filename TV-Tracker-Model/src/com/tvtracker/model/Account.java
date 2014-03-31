@@ -9,7 +9,13 @@ package com.tvtracker.model;
 public class Account {
 	private String name;
 	private MediaListProgress progress;
-	private String pwdHash;
+	private String password;
+	
+	Account(String name, String password) {
+		this.name = name;
+		this.password = password;
+		progress = new MediaListProgress(new MediaList(), new MediaProgress(null));
+	}
 
 	public MediaListProgress getMediaListProgress() {
 		return this.progress;
@@ -21,6 +27,14 @@ public class Account {
 	
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	
+	public String getPassword() {
+		return password;
 	}
 
 	public void setMediaListProgress(MediaListProgress newProgress) {
