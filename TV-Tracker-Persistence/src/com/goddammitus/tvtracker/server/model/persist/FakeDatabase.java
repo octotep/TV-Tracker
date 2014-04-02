@@ -7,18 +7,19 @@ import com.tvtracker.model.Account;
 
 public class FakeDatabase implements IDatabase {
 	private List<Account> accountList;
-	private Account dummyAccount(Austin, 12345);
-	
+	private Account dummyAccount;
+
 	public FakeDatabase() {
 		this.accountList = new ArrayList<Account>();
 		// TODO: add sample accounts
+		dummyAccount =  new Account("Austin", "12345");
 		accountList.add(dummyAccount);
 	}
 
-	@override
+	@Override
 	public Account login(String username, String password) {
 		//TODO: search accountList for matching username and password
 		return null;
 	}
-	
+
 }
