@@ -11,7 +11,7 @@ public class Account {
 	private MediaListProgress progress;
 	private String password;
 	
-	Account(String name, String password) {
+	public Account(String name, String password) {
 		this.name = name;
 		this.password = password;
 		progress = new MediaListProgress(new MediaList(), new MediaProgress(null));

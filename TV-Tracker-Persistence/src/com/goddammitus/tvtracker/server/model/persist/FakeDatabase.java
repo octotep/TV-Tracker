@@ -11,6 +11,7 @@ public class FakeDatabase implements IDatabase {
 	public FakeDatabase() {
 		this.accountList = new ArrayList<Account>();
 		// TODO: add sample accounts
+		accountList.add(new Account("Austin", "12345"));
 	}
 
 	@Override
