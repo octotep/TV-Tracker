@@ -12,12 +12,12 @@ public class FakeDatabase implements IDatabase {
 	public FakeDatabase() {
 		this.accountList = new ArrayList<Account>();
 		// TODO: add sample accounts
-		accountList.add(new Account());
+		accountList.add(dummyAccount);
 	}
 
-	@Override
+	@override
 	public Account login(String username, String password) {
-		// TODO Auto-generated method stub
+		//TODO: search accountList for matching username and password
 		return null;
 	}
 	
