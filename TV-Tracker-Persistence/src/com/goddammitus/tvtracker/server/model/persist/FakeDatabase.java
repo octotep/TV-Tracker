@@ -16,6 +16,12 @@ public class FakeDatabase implements IDatabase {
 	@Override
 	public Account login(String username, String password) {
 		// TODO Auto-generated method stub
+		for(Account account:accountList){
+            if(account!=null)
+                if(account.getName().equals(username))
+                	if(account.getPassword().equals(password))
+                		return account;
+        }
 		return null;
 	}
 	
