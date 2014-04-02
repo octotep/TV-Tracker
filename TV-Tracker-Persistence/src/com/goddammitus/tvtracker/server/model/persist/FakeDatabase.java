@@ -7,16 +7,16 @@ import com.tvtracker.model.Account;
 
 public class FakeDatabase implements IDatabase {
 	private List<Account> accountList;
-	
+	private Account dummyAccount;
+
 	public FakeDatabase() {
 		this.accountList = new ArrayList<Account>();
-		// TODO: add sample accounts
-		accountList.add(new Account("Austin", "12345"));
+		dummyAccount =  new Account("Austin", "12345");
+		accountList.add(dummyAccount);
 	}
 
 	@Override
 	public Account login(String username, String password) {
-		// TODO Auto-generated method stub
 		for(Account account:accountList){
             if(account!=null)
                 if(account.getName().equals(username))
@@ -25,5 +25,5 @@ public class FakeDatabase implements IDatabase {
         }
 		return null;
 	}
-	
+
 }
