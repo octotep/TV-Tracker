@@ -1,12 +1,14 @@
 package com.tvtracker.model;
 
+import java.io.Serializable;
+
 /**
  *
  * @authors Austin Forry, Daniel Muckerman, Chris Yealy, Austin Decker
  *
  */
 
-public class Account {
+public class Account implements Serializable {
 	private String name;
 	private MediaListProgress progress;
 	private String password;
