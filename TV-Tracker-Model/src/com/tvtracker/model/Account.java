@@ -18,6 +18,11 @@ public class Account implements Serializable {
 		this.password = password;
 		progress = new MediaListProgress(new MediaList(), new MediaProgress(null));
 	}
+	public Account() {
+		name = "";
+		password = "";
+		progress = new MediaListProgress(new MediaList(), new MediaProgress(null));
+	}
 
 	public MediaListProgress getMediaListProgress() {
 		return this.progress;

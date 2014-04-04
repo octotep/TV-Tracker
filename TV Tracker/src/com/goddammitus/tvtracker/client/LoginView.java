@@ -1,13 +1,20 @@
 package com.goddammitus.tvtracker.client;
+import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.IsWidget;
-import com.google.gwt.user.client.ui.Widget;
+import com.tvtracker.model.Account;
+import com.google.gwt.user.client.ui.TextBox;
 
-public class LoginView implements IsWidget {
+public class LoginView extends Composite implements IsWidget {
+	private Account model;
 
-	@Override
-	public Widget asWidget() {
-		// TODO Auto-generated method stub
-		return null;
+	public LoginView() {
+		
+		TextBox textBox = new TextBox();
+		initWidget(textBox);
+		
 	}
-	//TODO
+
+	public void setModel(Account model) {
+		this.model = model;
+	}
 }
