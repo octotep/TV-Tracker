@@ -11,14 +11,18 @@ public class FakeDatabase implements IDatabase {
 
 	public FakeDatabase() {
 		this.accountList = new ArrayList<Account>();
-		// TODO: add sample accounts
 		dummyAccount =  new Account("Austin", "12345");
 		accountList.add(dummyAccount);
 	}
 
 	@Override
 	public Account login(String username, String password) {
-		//TODO: search accountList for matching username and password
+		for(Account account:accountList){
+            if(account != null)
+                if(account.getName().equals(username))
+                	if(account.getPassword().equals(password))
+                		return account;
+        }
 		return null;
 	}
 
