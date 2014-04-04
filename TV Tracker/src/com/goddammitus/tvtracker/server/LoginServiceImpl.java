@@ -12,6 +12,8 @@ public class LoginServiceImpl extends RemoteServiceServlet implements LoginServi
 		LoginController controller = new LoginController();
 		Account acct = controller.login(login.getUsername(), login.getPassword());
 
+		System.out.println("Login " + ((acct != null) ? "succeeded" : "failed"));
+		
 		return acct;
 	}
 }

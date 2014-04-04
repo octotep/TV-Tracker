@@ -1,5 +1,6 @@
 package com.tvtracker.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -8,7 +9,7 @@ import java.util.ArrayList;
  *
  */
 
-public class MediaList {
+public class MediaList implements Serializable {
 	private ArrayList<Media> list;
 
 	public MediaList() {
