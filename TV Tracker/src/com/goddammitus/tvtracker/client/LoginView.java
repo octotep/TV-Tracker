@@ -31,12 +31,12 @@ public class LoginView extends Composite implements IsWidget {
 
 		txtUsername = new TextBox();
 		panel.add(txtUsername);
-		panel.setWidgetLeftWidth(txtUsername, 123.0, Unit.PX, 178.0, Unit.PX);
+		panel.setWidgetLeftWidth(txtUsername, 123.0, Unit.PX, 124.0, Unit.PX);
 		panel.setWidgetTopHeight(txtUsername, 87.0, Unit.PX, 31.0, Unit.PX);
 
 		txtPassword = new TextBox();
 		panel.add(txtPassword);
-		panel.setWidgetLeftWidth(txtPassword, 123.0, Unit.PX, 178.0, Unit.PX);
+		panel.setWidgetLeftWidth(txtPassword, 123.0, Unit.PX, 124.0, Unit.PX);
 		panel.setWidgetTopHeight(txtPassword, 142.0, Unit.PX, 31.0, Unit.PX);
 
 		Label lblPassword = new Label("Password:");
