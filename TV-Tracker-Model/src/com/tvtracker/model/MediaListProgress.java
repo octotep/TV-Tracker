@@ -9,6 +9,8 @@ import java.io.Serializable;
  */
 
 public class MediaListProgress implements Serializable {
+	private static final long serialVersionUID = 1L;
+
 	private MediaProgress mediaProgress;
 	private MediaList mediaList;
 

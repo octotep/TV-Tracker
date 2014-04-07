@@ -10,6 +10,8 @@ import java.util.Collections;
  */
 
 public class Account implements Serializable {
+	private static final long serialVersionUID = 1L;
+
 	private String name;
 	private MediaListProgress progress;
 	private String password;

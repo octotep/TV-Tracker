@@ -11,6 +11,8 @@ import java.util.Map;
  */
 
 public class MediaProgress implements Serializable {
+	private static final long serialVersionUID = 1L;
+
 	private HashMap<Media, Progress> mediaMap;
 
 	public MediaProgress(Map<Media, Progress> mediaMap) {
