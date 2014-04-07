@@ -1,6 +1,7 @@
 package com.tvtracker.model;
 
 import java.io.Serializable;
+import java.util.Collections;
 
 /**
  *
@@ -16,12 +17,12 @@ public class Account implements Serializable {
 	public Account(String name, String password) {
 		this.name = name;
 		this.password = password;
-		progress = new MediaListProgress(new MediaList(), new MediaProgress(null));
+		progress = new MediaListProgress(new MediaList(), new MediaProgress(Collections.<Media, Progress> emptyMap()));
 	}
 	public Account() {
 		name = "";
 		password = "";
-		progress = new MediaListProgress(new MediaList(), new MediaProgress(null));
+		progress = new MediaListProgress(new MediaList(), new MediaProgress(Collections.<Media, Progress> emptyMap()));
 	}
 
 	public MediaListProgress getMediaListProgress() {

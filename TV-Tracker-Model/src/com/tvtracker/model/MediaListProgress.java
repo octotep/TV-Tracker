@@ -1,12 +1,14 @@
 package com.tvtracker.model;
 
+import java.io.Serializable;
+
 /**
  * 
  * @authors Austin Forry, Daniel Muckerman, Chris Yealy, Austin Decker
  *
  */
 
-public class MediaListProgress {
+public class MediaListProgress implements Serializable {
 	private MediaProgress mediaProgress;
 	private MediaList mediaList;
 
