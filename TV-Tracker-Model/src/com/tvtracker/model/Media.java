@@ -1,13 +1,19 @@
 package com.tvtracker.model;
 
+import java.io.Serializable;
+
 /**
- * 
+ *
  * @authors Austin Forry, Daniel Muckerman, Chris Yealy, Austin Decker
  *
  */
 
-public class Media {
+public class Media implements Serializable {
 	private String name;
+
+	public Media() {
+
+	}
 
 	public Media(String name) {
 		this.name = name;
