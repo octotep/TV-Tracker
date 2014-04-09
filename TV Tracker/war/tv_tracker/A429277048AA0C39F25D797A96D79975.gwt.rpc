@@ -1,0 +1,17 @@
+com.goddammitus.tvtracker.client.LoginService, false, false, false, false, _, 2445505887
+com.google.gwt.user.client.rpc.IncompatibleRemoteServiceException, true, true, true, true, com.google.gwt.user.client.rpc.IncompatibleRemoteServiceException/3936916533, 3936916533
+com.google.gwt.user.client.rpc.RpcTokenException, true, true, false, false, com.google.gwt.user.client.rpc.RpcTokenException/2345075298, 2345075298
+com.google.gwt.user.client.rpc.XsrfToken, false, false, true, true, com.google.gwt.user.client.rpc.XsrfToken/4254043109, 4254043109
+com.tvtracker.model.Account, true, true, false, false, com.tvtracker.model.Account/2254435762, 2254435762
+com.tvtracker.model.Login, false, false, true, true, com.tvtracker.model.Login/4212428074, 4212428074
+com.tvtracker.model.Media, true, true, false, false, com.tvtracker.model.Media/417371920, 417371920
+com.tvtracker.model.MediaList, true, true, false, false, com.tvtracker.model.MediaList/3200901764, 3200901764
+com.tvtracker.model.MediaListProgress, true, true, false, false, com.tvtracker.model.MediaListProgress/3127687130, 3127687130
+com.tvtracker.model.MediaProgress, true, true, false, false, com.tvtracker.model.MediaProgress/3397313870, 3397313870
+java.lang.Exception, true, false, true, false, java.lang.Exception/1920171873, 1920171873
+java.lang.RuntimeException, true, false, true, false, java.lang.RuntimeException/515124647, 515124647
+java.lang.String, true, true, true, true, java.lang.String/2004016611, 2004016611
+java.lang.Throwable, true, false, true, false, java.lang.Throwable/2953622131, 2953622131
+java.util.ArrayList, true, true, false, false, java.util.ArrayList/4159755760, 4159755760
+java.util.HashMap, true, true, false, false, java.util.HashMap/1797211028, 1797211028
+java.util.LinkedHashMap, true, true, false, false, java.util.LinkedHashMap/3008245022, 3008245022
