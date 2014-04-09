@@ -19,7 +19,7 @@ public class TV_Tracker implements EntryPoint {
 		view.setModel(model);
 
 		RootLayoutPanel.get().add(view);
-		RootLayoutPanel.get().setWidgetLeftWidth(view, 10.0, Unit.PX, 1000.0, Unit.PX);
-		RootLayoutPanel.get().setWidgetTopHeight(view, 10.0, Unit.PX, 400.0, Unit.PX);
+		RootLayoutPanel.get().setWidgetLeftWidth(view, 0.0, Unit.PX, 1000.0, Unit.PX);
+		RootLayoutPanel.get().setWidgetTopHeight(view, 0.0, Unit.PX, 400.0, Unit.PX);
 	}
 }

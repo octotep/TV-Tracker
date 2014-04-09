@@ -10,18 +10,19 @@ import java.util.Collections;
  */
 
 public class Account implements Serializable {
+	private static final long serialVersionUID = 1L;
+
 	private String name;
 	private MediaListProgress progress;
 	private String password;
 
+	public Account() {
+
+	}
+
 	public Account(String name, String password) {
 		this.name = name;
 		this.password = password;
-		progress = new MediaListProgress(new MediaList(), new MediaProgress(Collections.<Media, Progress> emptyMap()));
-	}
-	public Account() {
-		name = "";
-		password = "";
 		progress = new MediaListProgress(new MediaList(), new MediaProgress(Collections.<Media, Progress> emptyMap()));
 	}
 
