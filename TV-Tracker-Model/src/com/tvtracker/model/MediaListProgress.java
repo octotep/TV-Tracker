@@ -16,27 +16,13 @@ public class MediaListProgress implements Serializable {
 	private MediaList mediaList;
 
 	public MediaListProgress() {
-<<<<<<< HEAD
 		this.mediaList = new MediaList();
 		this.mediaProgress = new MediaProgress(new HashMap<Media, Progress>());
 	}
 	
-=======
-
-	}
-
->>>>>>> refs/remotes/chris/master
 	public MediaListProgress(MediaList mediaList, MediaProgress mediaProgress) {
 		this.mediaList = mediaList;
 		this.mediaProgress = mediaProgress;
-	}
-
-	public void setMediaList(MediaList list) {
-		this.mediaList = list;
-	}
-
-	public void setMediaProgress(MediaProgress progress) {
-		this.mediaProgress = progress;
 	}
 
 	public void addMedia(Media media, int episodesSeenInCurrentSeason, int currentSeason) {
