@@ -1,6 +1,7 @@
 package com.tvtracker.model;
 
 import java.io.Serializable;
+import java.util.HashMap;
 
 /**
  * 
@@ -14,6 +15,11 @@ public class MediaListProgress implements Serializable {
 	private MediaProgress mediaProgress;
 	private MediaList mediaList;
 
+	public MediaListProgress() {
+		this.mediaList = new MediaList();
+		this.mediaProgress = new MediaProgress(new HashMap<Media, Progress>());
+	}
+	
 	public MediaListProgress(MediaList mediaList, MediaProgress mediaProgress) {
 		this.mediaList = mediaList;
 		this.mediaProgress = mediaProgress;
@@ -26,5 +32,13 @@ public class MediaListProgress implements Serializable {
 
 	public Progress currentProgress(Media media) {
 		return mediaProgress.getProgress(media);
+	}
+	
+	public void setMediaList(MediaList mediaList) {
+		this.mediaList = mediaList;
+	}
+	
+	public void setMediaProgress(MediaProgress mediaProgress) {
+		this.mediaProgress = mediaProgress;
 	}
 }
