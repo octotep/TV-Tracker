@@ -3,4 +3,7 @@
 /test
 /.gwt
 /bin
-.classpath
+/war/WEB-INF/classes
+/war/WEB-INF/lib
+/war/WEB-INF/deploy
+/war/tv_tracker
