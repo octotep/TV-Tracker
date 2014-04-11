@@ -68,7 +68,15 @@ public class LoginView extends Composite implements IsWidget {
 		RPC.loginService.login(model, new AsyncCallback<Account>() {
 		    @Override
 		    public void onSuccess(Account result) {
-		        user = result;
+		    	if (result == null) {
+		    		// TODO: display error (unknown user/password)
+		    	} else {
+		    		user = result;
+		    		
+		    		// Switch to next view
+		    		TV_Tracker.setView(new ExampleView());
+		    	}
+		        
 		    }
 
 		    @Override
