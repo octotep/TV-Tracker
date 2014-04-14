@@ -22,12 +22,13 @@ public class LoginView extends Composite implements IsWidget {
 		this.user = new Account();
 
 		LayoutPanel panel = new LayoutPanel();
+		panel.setStyleName("root");
 		initWidget(panel);
 
 		Label lblLoginPage = new Label("Login Page:");
 		panel.add(lblLoginPage);
-		panel.setWidgetLeftWidth(lblLoginPage, 157.0, Unit.PX, 61.0, Unit.PX);
-		panel.setWidgetTopHeight(lblLoginPage, 39.0, Unit.PX, 15.0, Unit.PX);
+		panel.setWidgetLeftWidth(lblLoginPage, 156.0, Unit.PX, 61.0, Unit.PX);
+		panel.setWidgetTopHeight(lblLoginPage, 40.0, Unit.PX, 15.0, Unit.PX);
 
 		txtUsername = new TextBox();
 		txtUsername.setWidth("114px");
