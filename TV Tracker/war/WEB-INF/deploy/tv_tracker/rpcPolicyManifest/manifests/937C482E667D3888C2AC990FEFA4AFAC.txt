@@ -1,2 +1,0 @@
-serviceClass: com.goddammitus.tvtracker.client.LoginService
-path: A429277048AA0C39F25D797A96D79975.gwt.rpc
