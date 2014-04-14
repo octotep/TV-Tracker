@@ -18,14 +18,15 @@ public class HomePageView extends Composite implements IsWidget {
 
 	public HomePageView(Account user) {
 		this.user = user;
+		String welcomeMessage = "Welcome, " + user.getName();
 
 		LayoutPanel panel = new LayoutPanel();
 		initWidget(panel);
 		
-		Label lblNewLabel = new Label("Welcome, " + user.getName());
-		panel.add(lblNewLabel);
-		panel.setWidgetLeftWidth(lblNewLabel, 19.0, Unit.PX, 138.0, Unit.PX);
-		panel.setWidgetTopHeight(lblNewLabel, 12.0, Unit.PX, 18.0, Unit.PX);
+		Label lblWelcome = new Label(welcomeMessage);
+		panel.add(lblWelcome);
+		panel.setWidgetLeftWidth(lblWelcome, 19.0, Unit.PX, 250.0, Unit.PX);
+		panel.setWidgetTopHeight(lblWelcome, 12.0, Unit.PX, 18.0, Unit.PX);
 	}
 
 	public void setModel(Login model) {
