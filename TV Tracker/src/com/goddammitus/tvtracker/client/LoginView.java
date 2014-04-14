@@ -11,12 +11,13 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.PasswordTextBox;
 
 public class LoginView extends Composite implements IsWidget {
 	private Login model;
 	private Account user;
 	private TextBox txtUsername;
-	private TextBox txtPassword;
+	private PasswordTextBox txtPassword;
 
 	public LoginView() {
 		this.user = new Account();
@@ -35,12 +36,6 @@ public class LoginView extends Composite implements IsWidget {
 		panel.add(txtUsername);
 		panel.setWidgetLeftWidth(txtUsername, 123.0, Unit.PX, 124.0, Unit.PX);
 		panel.setWidgetTopHeight(txtUsername, 87.0, Unit.PX, 31.0, Unit.PX);
-
-		txtPassword = new TextBox();
-		txtPassword.setWidth("114px");
-		panel.add(txtPassword);
-		panel.setWidgetLeftWidth(txtPassword, 123.0, Unit.PX, 124.0, Unit.PX);
-		panel.setWidgetTopHeight(txtPassword, 142.0, Unit.PX, 31.0, Unit.PX);
 
 		Label lblPassword = new Label("Password:");
 		panel.add(lblPassword);
@@ -61,6 +56,11 @@ public class LoginView extends Composite implements IsWidget {
 		panel.add(btnLogin);
 		panel.setWidgetLeftWidth(btnLogin, 139.0, Unit.PX, 89.0, Unit.PX);
 		panel.setWidgetTopHeight(btnLogin, 200.0, Unit.PX, 27.0, Unit.PX);
+		
+		txtPassword = new PasswordTextBox();
+		panel.add(txtPassword);
+		panel.setWidgetLeftWidth(txtPassword, 123.0, Unit.PX, 124.0, Unit.PX);
+		panel.setWidgetTopHeight(txtPassword, 143.0, Unit.PX, 32.0, Unit.PX);
 	}
 
 	public void handleLogin() {
