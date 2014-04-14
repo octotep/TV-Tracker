@@ -1,2 +1,0 @@
-serviceClass: com.goddammitus.tvtracker.client.GreetingService
-path: 69525178D2CB7ED8899C44393CC09C98.gwt.rpc
