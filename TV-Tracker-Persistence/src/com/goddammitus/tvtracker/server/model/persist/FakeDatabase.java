@@ -22,7 +22,7 @@ public class FakeDatabase implements IDatabase {
 	public Account login(String username, String password) {
 		for(Account account:accountList){
             if(account != null)
-                if(account.getName().equals(username))
+                if(account.getName().equalsIgnoreCase(username))
                 	if(account.getPassword().equals(password))
                 		return account;
         }
