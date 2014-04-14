@@ -8,11 +8,14 @@ import com.tvtracker.model.Account;
 public class FakeDatabase implements IDatabase {
 	private List<Account> accountList;
 	private Account dummyAccount;
+	private Account otherDummyAccount;
 
 	public FakeDatabase() {
 		this.accountList = new ArrayList<Account>();
 		dummyAccount =  new Account("Austin", "12345");
 		accountList.add(dummyAccount);
+		otherDummyAccount = new Account("Decker", "password1");
+		accountList.add(otherDummyAccount);
 	}
 
 	@Override
