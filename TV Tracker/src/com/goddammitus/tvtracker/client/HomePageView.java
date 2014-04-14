@@ -24,7 +24,7 @@ public class HomePageView extends Composite implements IsWidget {
 		
 		Label lblNewLabel = new Label("Welcome, " + user.getName());
 		panel.add(lblNewLabel);
-		panel.setWidgetLeftWidth(lblNewLabel, 19.0, Unit.PX, 56.0, Unit.PX);
+		panel.setWidgetLeftWidth(lblNewLabel, 19.0, Unit.PX, 138.0, Unit.PX);
 		panel.setWidgetTopHeight(lblNewLabel, 12.0, Unit.PX, 18.0, Unit.PX);
 	}
 
