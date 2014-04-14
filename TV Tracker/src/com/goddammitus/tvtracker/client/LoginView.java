@@ -75,6 +75,7 @@ public class LoginView extends Composite implements IsWidget {
 		    		user = result;
 		    		
 		    		// Switch to next view
+		    		//TV_Tracker.setView(new HomePageView(user));
 		    		TV_Tracker.setView(new ExampleView());
 		    	}
 		        
