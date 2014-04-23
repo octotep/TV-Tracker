@@ -46,6 +46,12 @@ public class LoginView extends Composite implements IsWidget {
 		panel.add(lblUsername);
 		panel.setWidgetLeftWidth(lblUsername, 29.0, Unit.PX, 73.0, Unit.PX);
 		panel.setWidgetTopHeight(lblUsername, 87.0, Unit.PX, 15.0, Unit.PX);
+		
+		txtPassword = new PasswordTextBox();
+		txtPassword.setWidth("114px");
+		panel.add(txtPassword);
+		panel.setWidgetLeftWidth(txtPassword, 123.0, Unit.PX, 124.0, Unit.PX);
+		panel.setWidgetTopHeight(txtPassword, 143.0, Unit.PX, 31.0, Unit.PX);
 
 		Button btnLogin = new Button("Login");
 		btnLogin.addClickHandler(new ClickHandler() {
@@ -56,11 +62,6 @@ public class LoginView extends Composite implements IsWidget {
 		panel.add(btnLogin);
 		panel.setWidgetLeftWidth(btnLogin, 139.0, Unit.PX, 89.0, Unit.PX);
 		panel.setWidgetTopHeight(btnLogin, 200.0, Unit.PX, 27.0, Unit.PX);
-		
-		txtPassword = new PasswordTextBox();
-		panel.add(txtPassword);
-		panel.setWidgetLeftWidth(txtPassword, 123.0, Unit.PX, 124.0, Unit.PX);
-		panel.setWidgetTopHeight(txtPassword, 143.0, Unit.PX, 32.0, Unit.PX);
 	}
 
 	public void handleLogin() {
