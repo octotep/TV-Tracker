@@ -21,6 +21,7 @@ public class MediaListProgressTest {
 	private MediaList testMediaList;
 	private MediaProgress testMediaProgress;
 	private Map<Media, Progress> testMap;
+	private Integer integer;
 	
 	@Before
 	public void setup() {
@@ -36,16 +37,19 @@ public class MediaListProgressTest {
 	
 	@Test
 	public void testCurrentProgress() {
-		assertEquals(1, testMediaProgress.getProgress(testMedia).getEpisodesSeen());
-		assertEquals(1, testMediaProgress.getProgress(testMedia).getCurrentSeason());
+		integer = 1;
+		assertEquals(integer, testMediaProgress.getProgress(testMedia).getEpisodesSeen());
+		assertEquals(integer, testMediaProgress.getProgress(testMedia).getCurrentSeason());
 	}
 	
 	@Test
 	public void testAddMedia() {
 		testMediaListProgress.addMedia(testMedia2, 2, 1);
-		assertEquals(2, testMediaProgress.getProgress(testMedia2).getEpisodesSeen());
-		assertEquals(1, testMediaProgress.getProgress(testMedia2).getCurrentSeason());
-		assertEquals(1, testMediaProgress.getProgress(testMedia).getEpisodesSeen());
-		assertEquals(1, testMediaProgress.getProgress(testMedia).getCurrentSeason());
+		integer = 2;
+		assertEquals(integer, testMediaProgress.getProgress(testMedia2).getEpisodesSeen());
+		integer = 1;
+		assertEquals(integer, testMediaProgress.getProgress(testMedia2).getCurrentSeason());
+		assertEquals(integer, testMediaProgress.getProgress(testMedia).getEpisodesSeen());
+		assertEquals(integer, testMediaProgress.getProgress(testMedia).getCurrentSeason());
 	}
 }
