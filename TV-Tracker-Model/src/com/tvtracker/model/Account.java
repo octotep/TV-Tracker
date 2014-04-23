@@ -9,6 +9,9 @@ import java.util.Collections;
  *
  */
 
+/*
+ * constructor
+ */
 public class Account implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -16,36 +19,60 @@ public class Account implements Serializable {
 	private MediaListProgress progress;
 	private String password;
 
+	/*
+	 * empty constructor for serialization
+	 */
 	public Account() {
 
 	}
-
+	
+	/*
+	 * initializes an Account -- takes a username and password
+	 */
 	public Account(String name, String password) {
 		this.name = name;
 		this.password = password;
 		progress = new MediaListProgress(new MediaList(), new MediaProgress(Collections.<Media, Progress> emptyMap()));
 	}
-
+	
+	/*
+	 * returns the MediaListProgress for current account
+	 */
 	public MediaListProgress getMediaListProgress() {
 		return this.progress;
 	}
-
+	
+	/*
+	 * returns username as a string
+	 */
 	public String getName() {
 		return name;
 	}
-
+	
+	/*
+	 * sets username for login
+	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 
+	/*
+	 * sets password for login
+	 */
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
+	
+	/*
+	 * returns password for login purposes
+	 */
 	public String getPassword() {
 		return password;
 	}
-
+	
+	/*
+	 * sets the MediaListProgress for the current account
+	 */
 	public void setMediaListProgress(MediaListProgress newProgress) {
 		this.progress = newProgress;
 	}
