@@ -12,15 +12,32 @@
     <servlet-class>com.goddammitus.tvtracker.server.LoginServiceImpl</servlet-class>
   </servlet>
 
+  <servlet>
+      <servlet-name>APISearchServiceImpl</servlet-name>
+      <servlet-class>com.goddammitus.tvtracker.server.APISearchServiceImpl</servlet-class>
+  </servlet>
+
   <servlet-mapping>
     <servlet-name>LoginServiceImpl</servlet-name>
     <url-pattern>/tv_tracker/login/*</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>APISearchServiceImpl</servlet-name>
+    <url-pattern>/tv_tracker/search/*</url-pattern>
   </servlet-mapping>
 
   <!--  Servlet context listeners -->
   <listener>
     <listener-class>com.goddammitus.tvtracker.server.DatabaseInitListener</listener-class>
   </listener>
+  <listener>
+    <listener-class>com.goddammitus.tvtracker.server.APIKeyListener</listener-class>
+  </listener>
+  <listener>
+    <listener-class>com.goddammitus.tvtracker.server.APIInitListener</listener-class>
+  </listener>
+
 
   <!-- Default page to serve -->
   <welcome-file-list>

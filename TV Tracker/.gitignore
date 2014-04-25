@@ -7,3 +7,6 @@
 /war/WEB-INF/lib
 /war/WEB-INF/deploy
 /war/tv_tracker
+
+# Don't check the API key into version control
+/src/com/goddammitus/tvtracker/server/res/apikey.txt
