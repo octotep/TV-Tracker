@@ -32,12 +32,16 @@ public class HomePageView extends Composite implements IsWidget {
 		
 		FlexTable flexTable = new FlexTable();
 		panel.add(flexTable);
-		panel.setWidgetLeftWidth(flexTable, 19.0, Unit.PX, 100.0, Unit.PX);
-		panel.setWidgetTopHeight(flexTable, 38.0, Unit.PX, 100.0, Unit.PX);
+		panel.setWidgetLeftRight(flexTable, 19.0, Unit.PX, 19.0, Unit.PX);
+		panel.setWidgetTopHeight(flexTable, 38.0, Unit.PX, 46.0, Unit.PX);
 		
-		flexTable.setText(0, 0, user.getMediaListProgress().getMedia(0).getName());
-		flexTable.setText(0, 1, user.getMediaListProgress().currentProgress(user.getMediaListProgress().getMedia(0)).getCurrentSeason().toString());
-		flexTable.setText(0, 2, user.getMediaListProgress().currentProgress(user.getMediaListProgress().getMedia(0)).getCurrentSeason().toString());
+		flexTable.setText(0, 0, "Show Name");
+		flexTable.setText(0, 1, "Current Season");
+		flexTable.setText(0, 2, "Episodes Seen in Current Season");
+		
+		flexTable.setText(1, 0, user.getMediaListProgress().getMedia(0).getName());
+		flexTable.setText(1, 1, user.getMediaListProgress().currentProgress(user.getMediaListProgress().getMedia(0)).getCurrentSeason().toString());
+		flexTable.setText(1, 2, user.getMediaListProgress().currentProgress(user.getMediaListProgress().getMedia(0)).getEpisodesSeen().toString());
 	}
 
 	public void setModel(Login model) {

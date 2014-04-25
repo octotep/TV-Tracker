@@ -16,39 +16,45 @@ public class FakeDatabase implements IDatabase {
 	private List<Account> accountList;
 	private Account dummyAccount;
 	private Account otherDummyAccount;
-	private Media testMedia;
-	private MediaListProgress testMediaListProgress;
-	private MediaList testMediaList;
-	private MediaProgress testMediaProgress;
-	private Map<Media, Progress> testMap;
 
 	public FakeDatabase() {
 		this.accountList = new ArrayList<Account>();
-		
+
 		// Dummy show data to test list with
-		testMedia = new Media("Samurai Flamenco");
-		testMap = new HashMap<Media, Progress>();
+		Media testMedia = new Media("Samurai Flamenco");
+		Map<Media, Progress> testMap = new HashMap<Media, Progress>();
 		testMap.put(testMedia, new Progress(1, 1));
-		testMediaList = new MediaList();
+		MediaList testMediaList = new MediaList();
 		testMediaList.addMedia(testMedia);
-		testMediaProgress = new MediaProgress(testMap);
-		testMediaListProgress = new MediaListProgress(testMediaList, testMediaProgress);
-		
+		MediaProgress testMediaProgress = new MediaProgress(testMap);
+		MediaListProgress testMediaListProgress = new MediaListProgress(testMediaList, testMediaProgress);
+
 		dummyAccount =  new Account("Austin", "12345");
 		accountList.add(dummyAccount);
+		dummyAccount.setMediaListProgress(testMediaListProgress);
+
+		// Dummy show data to test list with
+		Media testMedia2 = new Media("Chuck");
+		Map<Media, Progress> testMap2 = new HashMap<Media, Progress>();
+		testMap2.put(testMedia2, new Progress(5, 8));
+		MediaList testMediaList2 = new MediaList();
+		testMediaList2.addMedia(testMedia2);
+		MediaProgress testMediaProgress2 = new MediaProgress(testMap2);
+		MediaListProgress testMediaListProgress2 = new MediaListProgress(testMediaList2, testMediaProgress2);
+
 		otherDummyAccount = new Account("Decker", "password1");
 		accountList.add(otherDummyAccount);
-		dummyAccount.setMediaListProgress(testMediaListProgress);
+		otherDummyAccount.setMediaListProgress(testMediaListProgress2);
 	}
 
 	@Override
 	public Account login(String username, String password) {
 		for(Account account:accountList){
-            if(account != null)
-                if(account.getName().equalsIgnoreCase(username))
-                	if(account.getPassword().equals(password))
-                		return account;
-        }
+			if(account != null)
+				if(account.getName().equalsIgnoreCase(username))
+					if(account.getPassword().equals(password))
+						return account;
+		}
 		return null;
 	}
 
