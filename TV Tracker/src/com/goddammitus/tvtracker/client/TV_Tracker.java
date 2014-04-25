@@ -17,10 +17,7 @@ public class TV_Tracker implements EntryPoint {
 	 * This is the entry point method.
 	 */
 	public void onModuleLoad() {
-		Login model = new Login();
 		LoginView view = new LoginView();
-		view.setModel(model);
-
 		setView(view);
 	}
 	

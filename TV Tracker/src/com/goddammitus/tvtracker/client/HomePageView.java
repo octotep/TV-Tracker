@@ -17,7 +17,7 @@ import com.google.gwt.user.client.ui.FlexTable;
 public class HomePageView extends Composite implements IsWidget {
 	private Login model;
 	private Account user;
-
+	
 	public HomePageView(Account user) {
 		this.user = user;
 		String welcomeMessage = "Welcome, " + user.getName();
@@ -42,6 +42,22 @@ public class HomePageView extends Composite implements IsWidget {
 		flexTable.setText(1, 0, user.getMediaListProgress().getMedia(0).getName());
 		flexTable.setText(1, 1, user.getMediaListProgress().currentProgress(user.getMediaListProgress().getMedia(0)).getCurrentSeason().toString());
 		flexTable.setText(1, 2, user.getMediaListProgress().currentProgress(user.getMediaListProgress().getMedia(0)).getEpisodesSeen().toString());
+		
+		Button btnLogout = new Button("Logout");
+		btnLogout.addClickHandler(new ClickHandler() {
+			public void onClick(ClickEvent event) {
+				handleLogout();
+			}
+		});
+		panel.add(btnLogout);
+		panel.setWidgetLeftWidth(btnLogout, 369.0, Unit.PX, 81.0, Unit.PX);
+		panel.setWidgetTopHeight(btnLogout, 2.0, Unit.PX, 30.0, Unit.PX);
+	}
+	
+	public void handleLogout() {
+		Session.clear();
+		LoginView view = new LoginView();
+		TV_Tracker.setView(view);
 	}
 
 	public void setModel(Login model) {
