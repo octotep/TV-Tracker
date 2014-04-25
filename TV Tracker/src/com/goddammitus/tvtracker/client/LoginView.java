@@ -62,13 +62,28 @@ public class LoginView extends Composite implements IsWidget {
 			}
 		});
 		panel.add(btnLogin);
-		panel.setWidgetLeftWidth(btnLogin, 139.0, Unit.PX, 89.0, Unit.PX);
-		panel.setWidgetTopHeight(btnLogin, 200.0, Unit.PX, 27.0, Unit.PX);
+		panel.setWidgetLeftWidth(btnLogin, 123.0, Unit.PX, 94.0, Unit.PX);
+		panel.setWidgetTopHeight(btnLogin, 205.0, Unit.PX, 27.0, Unit.PX);
 		
 		lblLoginFailed = new Label("");
 		panel.add(lblLoginFailed);
 		panel.setWidgetLeftWidth(lblLoginFailed, 260.0, Unit.PX, 73.0, Unit.PX);
 		panel.setWidgetTopHeight(lblLoginFailed, 200.0, Unit.PX, 18.0, Unit.PX);
+		
+		Label lblNoAccount = new Label("No Account?");
+		panel.add(lblNoAccount);
+		panel.setWidgetLeftWidth(lblNoAccount, 29.0, Unit.PX, 89.0, Unit.PX);
+		panel.setWidgetTopHeight(lblNoAccount, 258.0, Unit.PX, 18.0, Unit.PX);
+		
+		Button btnSignUp = new Button("Sign Up");
+		btnSignUp.addClickHandler(new ClickHandler() {
+			public void onClick(ClickEvent event) {
+				handleAccountCreate();
+			}
+		});
+		panel.add(btnSignUp);
+		panel.setWidgetLeftWidth(btnSignUp, 123.0, Unit.PX, 94.0, Unit.PX);
+		panel.setWidgetTopHeight(btnSignUp, 246.0, Unit.PX, 30.0, Unit.PX);
 	}
 
 	public void handleLogin() {
@@ -96,7 +111,11 @@ public class LoginView extends Composite implements IsWidget {
 		    }
 		});
 	}
-
+	
+	public void handleAccountCreate() {
+		TV_Tracker.setView(new AccountCreateView());
+	}
+		        
 	public void setModel(Login model) {
 		this.model = model;
 	}
