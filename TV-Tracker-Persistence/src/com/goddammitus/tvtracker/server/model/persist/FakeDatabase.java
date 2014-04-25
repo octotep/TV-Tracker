@@ -23,7 +23,7 @@ public class FakeDatabase implements IDatabase {
 		// Dummy show data to test list with
 		Media testMedia = new Media("Samurai Flamenco");
 		Map<Media, Progress> testMap = new HashMap<Media, Progress>();
-		testMap.put(testMedia, new Progress(1, 1));
+		testMap.put(testMedia, new Progress(1, 1, 22));
 		MediaList testMediaList = new MediaList();
 		testMediaList.addMedia(testMedia);
 		MediaProgress testMediaProgress = new MediaProgress(testMap);
@@ -36,7 +36,7 @@ public class FakeDatabase implements IDatabase {
 		// Dummy show data to test list with
 		Media testMedia2 = new Media("Chuck");
 		Map<Media, Progress> testMap2 = new HashMap<Media, Progress>();
-		testMap2.put(testMedia2, new Progress(8, 5));
+		testMap2.put(testMedia2, new Progress(5, 8, 13));
 		MediaList testMediaList2 = new MediaList();
 		testMediaList2.addMedia(testMedia2);
 		MediaProgress testMediaProgress2 = new MediaProgress(testMap2);

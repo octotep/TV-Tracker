@@ -16,6 +16,7 @@ public class Progress implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private Integer episodesSeenInCurrentSeason;
 	private Integer currentSeason;
+	private Integer episodesInCurrentSeason;
 	
 	/*
 	 * empty constructor for serialization
@@ -27,8 +28,9 @@ public class Progress implements Serializable {
 	/*
 	 * initializes Progress -- uses Integers to track episode count and seasons
 	 */
-	public Progress(Integer episodesSeenInCurrentSeason, Integer currentSeason) {
+	public Progress(Integer currentSeason, Integer episodesSeenInCurrentSeason, Integer episodesInCurrentSeason) {
 		this.episodesSeenInCurrentSeason = episodesSeenInCurrentSeason;
+		this.episodesInCurrentSeason = episodesInCurrentSeason;
 		this.currentSeason = currentSeason;
 	}
 	
@@ -45,6 +47,13 @@ public class Progress implements Serializable {
 	public void setCurrentSeason(Integer currentSeason) {
 		this.currentSeason = currentSeason;
 	}
+	
+	/*
+	 * set number of episodes in the current season
+	 */
+	public void setEpisodesInCurrentSeason(Integer episodesInCurrentSeason) {
+		this.episodesInCurrentSeason = episodesInCurrentSeason;
+	}
 
 	/*
 	 * return episode count
@@ -58,5 +67,12 @@ public class Progress implements Serializable {
 	 */
 	public Integer getCurrentSeason() {
 		return currentSeason;
+	}
+	
+	/*
+	 * return number of episodes in current season
+	 */
+	public Integer getEpisodesInCurrentSeason() {
+		return episodesInCurrentSeason;
 	}
 }
