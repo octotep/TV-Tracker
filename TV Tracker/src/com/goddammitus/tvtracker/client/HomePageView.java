@@ -16,6 +16,8 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.cellview.client.CellTable;
+import com.google.gwt.user.client.ui.FlexTable;
 
 public class HomePageView extends Composite implements IsWidget {
 	private Account user;
@@ -33,6 +35,15 @@ public class HomePageView extends Composite implements IsWidget {
 		panel.add(lblWelcome);
 		panel.setWidgetLeftWidth(lblWelcome, 19.0, Unit.PX, 250.0, Unit.PX);
 		panel.setWidgetTopHeight(lblWelcome, 12.0, Unit.PX, 18.0, Unit.PX);
+		
+		FlexTable flexTable = new FlexTable();
+		panel.add(flexTable);
+		panel.setWidgetLeftWidth(flexTable, 19.0, Unit.PX, 100.0, Unit.PX);
+		panel.setWidgetTopHeight(flexTable, 38.0, Unit.PX, 100.0, Unit.PX);
+		
+		flexTable.setText(0, 0, user.getMediaListProgress().getMedia(0).getName());
+		flexTable.setText(0, 1, user.getMediaListProgress().currentProgress(user.getMediaListProgress().getMedia(0)).getCurrentSeason().toString());
+		flexTable.setText(0, 2, user.getMediaListProgress().currentProgress(user.getMediaListProgress().getMedia(0)).getCurrentSeason().toString());
 
 		Label lblSearchSeries = new Label("Search Series:");
 		panel.add(lblSearchSeries);
@@ -62,13 +73,12 @@ public class HomePageView extends Composite implements IsWidget {
 
 			@Override
 			public void onFailure(Throwable caught) {
-				// TODO Auto-generated method stub
+				// TODO do something with error
 				System.out.println("RPC search series call failed with query: \"" + query + "\"");
 			}
 
 			@Override
 			public void onSuccess(List<Series> results) {
-				// TODO Auto-generated method stub
 				TV_Tracker.setView(new SearchResultsView(user, results));
 			}
 

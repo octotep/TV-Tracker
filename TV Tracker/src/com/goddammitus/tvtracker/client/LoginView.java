@@ -11,35 +11,31 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.PasswordTextBox;
 
 public class LoginView extends Composite implements IsWidget {
 	private Login model;
 	private Account user;
 	private TextBox txtUsername;
-	private TextBox txtPassword;
+	private PasswordTextBox txtPassword;
 
 	public LoginView() {
 		this.user = new Account();
 
 		LayoutPanel panel = new LayoutPanel();
+		panel.setStyleName("root");
 		initWidget(panel);
 
 		Label lblLoginPage = new Label("Login Page:");
 		panel.add(lblLoginPage);
-		panel.setWidgetLeftWidth(lblLoginPage, 157.0, Unit.PX, 61.0, Unit.PX);
-		panel.setWidgetTopHeight(lblLoginPage, 39.0, Unit.PX, 15.0, Unit.PX);
+		panel.setWidgetLeftWidth(lblLoginPage, 156.0, Unit.PX, 61.0, Unit.PX);
+		panel.setWidgetTopHeight(lblLoginPage, 40.0, Unit.PX, 15.0, Unit.PX);
 
 		txtUsername = new TextBox();
 		txtUsername.setWidth("114px");
 		panel.add(txtUsername);
 		panel.setWidgetLeftWidth(txtUsername, 123.0, Unit.PX, 124.0, Unit.PX);
 		panel.setWidgetTopHeight(txtUsername, 87.0, Unit.PX, 31.0, Unit.PX);
-
-		txtPassword = new TextBox();
-		txtPassword.setWidth("114px");
-		panel.add(txtPassword);
-		panel.setWidgetLeftWidth(txtPassword, 123.0, Unit.PX, 124.0, Unit.PX);
-		panel.setWidgetTopHeight(txtPassword, 142.0, Unit.PX, 31.0, Unit.PX);
 
 		Label lblPassword = new Label("Password:");
 		panel.add(lblPassword);
@@ -50,6 +46,12 @@ public class LoginView extends Composite implements IsWidget {
 		panel.add(lblUsername);
 		panel.setWidgetLeftWidth(lblUsername, 29.0, Unit.PX, 73.0, Unit.PX);
 		panel.setWidgetTopHeight(lblUsername, 87.0, Unit.PX, 15.0, Unit.PX);
+		
+		txtPassword = new PasswordTextBox();
+		txtPassword.setWidth("114px");
+		panel.add(txtPassword);
+		panel.setWidgetLeftWidth(txtPassword, 123.0, Unit.PX, 124.0, Unit.PX);
+		panel.setWidgetTopHeight(txtPassword, 143.0, Unit.PX, 31.0, Unit.PX);
 
 		Button btnLogin = new Button("Login");
 		btnLogin.addClickHandler(new ClickHandler() {

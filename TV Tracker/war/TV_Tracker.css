@@ -32,3 +32,10 @@ h1 {
 #closeButton {
   margin: 15px 6px 6px;
 }
+.root {
+	text-align: left;
+  width: 450px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}

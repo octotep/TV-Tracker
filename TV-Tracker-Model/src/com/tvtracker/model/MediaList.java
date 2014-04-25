@@ -26,4 +26,8 @@ public class MediaList implements Serializable {
 		return this;
 	}
 	
+	public Media getMedia(int number) {
+		return this.list.get(number);
+	}
+	
 }
