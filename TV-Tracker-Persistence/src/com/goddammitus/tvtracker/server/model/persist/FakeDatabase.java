@@ -29,7 +29,7 @@ public class FakeDatabase implements IDatabase {
 		MediaProgress testMediaProgress = new MediaProgress(testMap);
 		MediaListProgress testMediaListProgress = new MediaListProgress(testMediaList, testMediaProgress);
 
-		dummyAccount =  new Account("Austin", "12345");
+		dummyAccount =  new Account("Forry", "12345");
 		accountList.add(dummyAccount);
 		dummyAccount.setMediaListProgress(testMediaListProgress);
 
