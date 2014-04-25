@@ -1,33 +1,43 @@
 package com.tvtracker.model;
 
+import java.io.Serializable;
+
 /**
  * 
  * @authors Austin Forry, Daniel Muckerman, Chris Yealy, Austin Decker
  *
  */
 
-public class Progress {
-	private int episodesSeenInCurrentSeason;
-	private int currentSeason;
+public class Progress implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private Integer episodesSeenInCurrentSeason;
+	private Integer currentSeason;
+	
+	public Progress() {
+	
+	}
 
-	public Progress(int episodesSeenInCurrentSeason, int currentSeason) {
+	public Progress(Integer episodesSeenInCurrentSeason, Integer currentSeason) {
 		this.episodesSeenInCurrentSeason = episodesSeenInCurrentSeason;
 		this.currentSeason = currentSeason;
 	}
 
-	public void setEpisodesSeen(int episodesSeenInCurrentSeason) {
+	public void setEpisodesSeen(Integer episodesSeenInCurrentSeason) {
 		this.episodesSeenInCurrentSeason = episodesSeenInCurrentSeason;
 	}
 
-	public void setCurrentSeason(int currentSeason) {
+	public void setCurrentSeason(Integer currentSeason) {
 		this.currentSeason = currentSeason;
 	}
 
-	public int getEpisodesSeen() {
+	public Integer getEpisodesSeen() {
 		return episodesSeenInCurrentSeason;
 	}
 
-	public int getCurrentSeason() {
+	public Integer getCurrentSeason() {
 		return currentSeason;
 	}
 }

@@ -34,6 +34,10 @@ public class MediaListProgress implements Serializable {
 		return mediaProgress.getProgress(media);
 	}
 	
+	public Media getMedia(int number) {
+		return this.mediaList.getMedia(number);
+	}
+	
 	public void setMediaList(MediaList mediaList) {
 		this.mediaList = mediaList;
 	}
