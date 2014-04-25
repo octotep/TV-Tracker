@@ -39,3 +39,11 @@ h1 {
   margin-left: auto;
   margin-right: auto;
 }
+tr:first-child td {
+    background-color: #002B36;
+    color: #EEE9D7;
+    padding: 5px 5px 5px 5px;
+}
+td {
+	text-align: center;
+}

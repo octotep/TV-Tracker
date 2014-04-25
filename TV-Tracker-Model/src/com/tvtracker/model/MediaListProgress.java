@@ -25,9 +25,9 @@ public class MediaListProgress implements Serializable {
 		this.mediaProgress = mediaProgress;
 	}
 
-	public void addMedia(Media media, int episodesSeenInCurrentSeason, int currentSeason) {
+	public void addMedia(Media media, int episodesSeenInCurrentSeason, int episodesInCurrentSeason, int currentSeason) {
 		mediaList.addMedia(media);
-		mediaProgress.addMedia(media, new Progress(episodesSeenInCurrentSeason, currentSeason));
+		mediaProgress.addMedia(media, new Progress(currentSeason, episodesSeenInCurrentSeason, episodesInCurrentSeason));
 	}
 
 	public Progress currentProgress(Media media) {
