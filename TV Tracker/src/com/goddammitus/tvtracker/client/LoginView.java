@@ -18,6 +18,7 @@ public class LoginView extends Composite implements IsWidget {
 	private Account user;
 	private TextBox txtUsername;
 	private PasswordTextBox txtPassword;
+	private Label lblLoginFailed;
 
 	public LoginView() {
 		this.user = new Account();
@@ -56,12 +57,18 @@ public class LoginView extends Composite implements IsWidget {
 		Button btnLogin = new Button("Login");
 		btnLogin.addClickHandler(new ClickHandler() {
 			public void onClick(ClickEvent event) {
+				lblLoginFailed.setText("");
 				handleLogin();
 			}
 		});
 		panel.add(btnLogin);
 		panel.setWidgetLeftWidth(btnLogin, 139.0, Unit.PX, 89.0, Unit.PX);
 		panel.setWidgetTopHeight(btnLogin, 200.0, Unit.PX, 27.0, Unit.PX);
+		
+		lblLoginFailed = new Label("");
+		panel.add(lblLoginFailed);
+		panel.setWidgetLeftWidth(lblLoginFailed, 260.0, Unit.PX, 73.0, Unit.PX);
+		panel.setWidgetTopHeight(lblLoginFailed, 200.0, Unit.PX, 18.0, Unit.PX);
 	}
 
 	public void handleLogin() {
@@ -72,12 +79,12 @@ public class LoginView extends Composite implements IsWidget {
 		    public void onSuccess(Account result) {
 		    	if (result == null) {
 		    		// TODO: display error (unknown user/password)
+		    		lblLoginFailed.setText("Login failed!");
 		    	} else {
 		    		user = result;
 		    		
 		    		// Switch to next view
 		    		TV_Tracker.setView(new HomePageView(user));
-		    		//TV_Tracker.setView(new ExampleView());
 		    	}
 		        
 		    }
