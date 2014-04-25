@@ -10,6 +10,9 @@ import java.util.Map;
  *
  */
 
+/*
+ * constructor
+ */
 public class MediaProgress implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -18,15 +21,24 @@ public class MediaProgress implements Serializable {
 	public MediaProgress() {
 
 	}
-
+	
+	/*
+	 * initializes the mediaMap
+	 */
 	public MediaProgress(Map<Media, Progress> mediaMap) {
 		this.mediaMap = new HashMap<Media, Progress>(mediaMap);
 	}
-
+	
+	/*
+	 * add media and progress to the mediaMap
+	 */
 	public void addMedia(Media media, Progress progress) {
 		this.mediaMap.put(media, progress);
 	}
-
+	
+	/*
+	 * get current Progress using media as the key
+	 */
 	public Progress getProgress(Media media) {
 		return mediaMap.get(media);
 	}

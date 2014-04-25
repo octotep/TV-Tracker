@@ -28,7 +28,7 @@ public class MediaListProgressTest {
 		testMedia = new Media("Forry");
 		testMedia2 = new Media("Austin");
 		testMap = new HashMap<Media, Progress>();
-		testMap.put(testMedia, new Progress(1, 1));
+		testMap.put(testMedia, new Progress(1, 1, 1));
 		testMediaList = new MediaList();
 		testMediaProgress = new MediaProgress(testMap);
 		testMediaListProgress = new MediaListProgress(testMediaList, testMediaProgress);
@@ -44,8 +44,8 @@ public class MediaListProgressTest {
 	
 	@Test
 	public void testAddMedia() {
-		testMediaListProgress.addMedia(testMedia2, 2, 1);
-		integer = 2;
+		testMediaListProgress.addMedia(testMedia2, 1, 1, 1);
+		integer = 1;
 		assertEquals(integer, testMediaProgress.getProgress(testMedia2).getEpisodesSeen());
 		integer = 1;
 		assertEquals(integer, testMediaProgress.getProgress(testMedia2).getCurrentSeason());
