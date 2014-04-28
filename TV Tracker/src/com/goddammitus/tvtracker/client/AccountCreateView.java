@@ -4,6 +4,7 @@ import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.LayoutPanel;
 import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.user.client.ui.PasswordTextBox;
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Button;
@@ -34,7 +35,7 @@ public class AccountCreateView extends Composite implements IsWidget{
 		panel.setWidgetLeftWidth(txtboxCreateUsername, 160.0, Unit.PX, 173.0, Unit.PX);
 		panel.setWidgetTopHeight(txtboxCreateUsername, 81.0, Unit.PX, 34.0, Unit.PX);
 		
-		TextBox txtboxCreatePassword = new TextBox();
+		TextBox txtboxCreatePassword = new PasswordTextBox();
 		panel.add(txtboxCreatePassword);
 		panel.setWidgetLeftWidth(txtboxCreatePassword, 160.0, Unit.PX, 173.0, Unit.PX);
 		panel.setWidgetTopHeight(txtboxCreatePassword, 140.0, Unit.PX, 34.0, Unit.PX);
