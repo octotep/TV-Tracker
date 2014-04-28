@@ -9,7 +9,7 @@ public class Session {
 		return theInstance;
 	}
 	
-	// Call this to clear the current contents
+	// Call this to clear the current contents (aka logout)
 	public static void clear() {
 		theInstance = new Session();
 	}

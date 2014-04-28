@@ -8,4 +8,8 @@ public interface LoginServiceAsync {
 
 	void login(Login login,
 			AsyncCallback<Account> callback);
+
+	void checkIfAccountExists(String username,
+			AsyncCallback<Boolean> callback);
+	
 }

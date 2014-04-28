@@ -13,7 +13,7 @@ import com.tvtracker.model.MediaProgress;
 import com.tvtracker.model.Progress;
 
 public class FakeDatabase implements IDatabase {
-	private List<Account> accountList;
+	private ArrayList<Account> accountList;
 	private Account dummyAccount;
 	private Account otherDummyAccount;
 
@@ -57,5 +57,15 @@ public class FakeDatabase implements IDatabase {
 		}
 		return null;
 	}
-
+	
+	@Override
+	public boolean checkIfAccountExists(String username) {
+		for(Account account:accountList) {
+			if(account.getName() == username) {
+				return true;
+			}
+		}
+		
+		return false;
+	}
 }

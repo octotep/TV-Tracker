@@ -7,4 +7,8 @@ public class LoginController {
 	public Account login(String username, String password) {
 		return DatabaseProvider.getInstance().login(username, password);
 	}
+	
+	public boolean checkIfAccountExists(String username) {
+		return DatabaseProvider.getInstance().checkIfAccountExists(username);
+	}
 }

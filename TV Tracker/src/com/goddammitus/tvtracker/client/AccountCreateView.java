@@ -1,15 +1,23 @@
 package com.goddammitus.tvtracker.client;
 
+import com.goddammitus.tvtracker.server.model.persist.DatabaseProvider;
+import com.goddammitus.tvtracker.server.model.persist.FakeDatabase;
+import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.LayoutPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.PasswordTextBox;
 import com.google.gwt.dom.client.Style.Unit;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Button;
+import com.tvtracker.model.Account;
 
 public class AccountCreateView extends Composite implements IsWidget{
+	private TextBox txtCreateUsername;
+	private PasswordTextBox txtCreatePassword;
 	
 	public AccountCreateView() {
 		LayoutPanel panel = new LayoutPanel();
@@ -30,19 +38,40 @@ public class AccountCreateView extends Composite implements IsWidget{
 		panel.setWidgetLeftWidth(lblCreatePassword, 35.0, Unit.PX, 112.0, Unit.PX);
 		panel.setWidgetTopHeight(lblCreatePassword, 146.0, Unit.PX, 18.0, Unit.PX);
 		
-		TextBox txtboxCreateUsername = new TextBox();
-		panel.add(txtboxCreateUsername);
-		panel.setWidgetLeftWidth(txtboxCreateUsername, 160.0, Unit.PX, 173.0, Unit.PX);
-		panel.setWidgetTopHeight(txtboxCreateUsername, 81.0, Unit.PX, 34.0, Unit.PX);
+		txtCreateUsername = new TextBox();
+		panel.add(txtCreateUsername);
+		panel.setWidgetLeftWidth(txtCreateUsername, 160.0, Unit.PX, 173.0, Unit.PX);
+		panel.setWidgetTopHeight(txtCreateUsername, 81.0, Unit.PX, 34.0, Unit.PX);
 		
-		TextBox txtboxCreatePassword = new PasswordTextBox();
-		panel.add(txtboxCreatePassword);
-		panel.setWidgetLeftWidth(txtboxCreatePassword, 160.0, Unit.PX, 173.0, Unit.PX);
-		panel.setWidgetTopHeight(txtboxCreatePassword, 140.0, Unit.PX, 34.0, Unit.PX);
+		txtCreatePassword = new PasswordTextBox();
+		panel.add(txtCreatePassword);
+		panel.setWidgetLeftWidth(txtCreatePassword, 160.0, Unit.PX, 173.0, Unit.PX);
+		panel.setWidgetTopHeight(txtCreatePassword, 140.0, Unit.PX, 34.0, Unit.PX);
 		
 		Button btnSubmit = new Button("Submit");
+		btnSubmit.addClickHandler(new ClickHandler() {
+			public void onClick(ClickEvent event) {
+				handleCreate();
+			}
+		});
 		panel.add(btnSubmit);
 		panel.setWidgetLeftWidth(btnSubmit, 160.0, Unit.PX, 81.0, Unit.PX);
 		panel.setWidgetTopHeight(btnSubmit, 208.0, Unit.PX, 30.0, Unit.PX);
+	}
+	
+	public void handleCreate() {
+		RPC.loginService.checkIfAccountExists(Session.getInstance().getLogin().getUsername(), new AsyncCallback<Boolean>() {
+			@Override
+			public void onSuccess(Boolean result) {
+				// TODO everything
+				
+			}
+			
+			@Override
+			public void onFailure(Throwable caught) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
 	}
 }

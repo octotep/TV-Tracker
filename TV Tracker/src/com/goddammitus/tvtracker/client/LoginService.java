@@ -8,4 +8,6 @@ import com.tvtracker.model.Login;
 @RemoteServiceRelativePath("login")
 public interface LoginService extends RemoteService {
 	public Account login(Login login);
+	
+	public boolean checkIfAccountExists(String username);
 }

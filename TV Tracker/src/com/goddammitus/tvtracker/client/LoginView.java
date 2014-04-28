@@ -14,7 +14,6 @@ import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.PasswordTextBox;
 
 public class LoginView extends Composite implements IsWidget {
-	//private Login model;
 	private Account user;
 	private TextBox txtUsername;
 	private PasswordTextBox txtPassword;
@@ -113,7 +112,8 @@ public class LoginView extends Composite implements IsWidget {
 	}
 	
 	public void handleAccountCreate() {
-		TV_Tracker.setView(new AccountCreateView());
+		AccountCreateView view = new AccountCreateView();
+		TV_Tracker.setView(view);
 	}
 
 	public void updateModel() {
