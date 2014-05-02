@@ -60,7 +60,7 @@ public class AccountCreateView extends Composite implements IsWidget{
 	}
 	
 	public void handleCreate() {
-		RPC.loginService.checkIfAccountExists(Session.getInstance().getLogin().getUsername(), new AsyncCallback<Boolean>() {
+		RPC.loginService.checkIfAccountExists(txtCreateUsername.getText(), new AsyncCallback<Boolean>() {
 			@Override
 			public void onSuccess(Boolean result) {
 				// TODO everything
