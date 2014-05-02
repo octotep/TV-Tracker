@@ -61,9 +61,9 @@ public class FakeDatabase implements IDatabase {
 	@Override
 	public boolean checkIfAccountExists(String username) {
 		for(Account account:accountList) {
-			if(account.getName() == username) {
-				return true;
-			}
+			if(account != null)
+				if(account.getName().equalsIgnoreCase(username))
+					return true;
 		}
 		
 		return false;
