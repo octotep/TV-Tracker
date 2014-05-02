@@ -1,10 +1,10 @@
 package com.goddammitus.tvtracker.client;
 
-import java.util.List;
+import java.util.ArrayList;
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.omertron.thetvdbapi.model.Series;
 
 public interface APISearchServiceAsync {
-	void seriesSearch(String series, AsyncCallback<List<Series>> callback);
+	void seriesSearch(String series, AsyncCallback<ArrayList<Series>> callback);
 }

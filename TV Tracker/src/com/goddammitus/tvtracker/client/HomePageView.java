@@ -1,4 +1,5 @@
 package com.goddammitus.tvtracker.client;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.management.Query;
@@ -35,12 +36,12 @@ public class HomePageView extends Composite implements IsWidget {
 		panel.add(lblWelcome);
 		panel.setWidgetLeftWidth(lblWelcome, 19.0, Unit.PX, 250.0, Unit.PX);
 		panel.setWidgetTopHeight(lblWelcome, 12.0, Unit.PX, 18.0, Unit.PX);
-		
+
 		FlexTable flexTable = new FlexTable();
 		panel.add(flexTable);
 		panel.setWidgetLeftWidth(flexTable, 19.0, Unit.PX, 100.0, Unit.PX);
 		panel.setWidgetTopHeight(flexTable, 38.0, Unit.PX, 100.0, Unit.PX);
-		
+
 		flexTable.setText(0, 0, user.getMediaListProgress().getMedia(0).getName());
 		flexTable.setText(0, 1, user.getMediaListProgress().currentProgress(user.getMediaListProgress().getMedia(0)).getCurrentSeason().toString());
 		flexTable.setText(0, 2, user.getMediaListProgress().currentProgress(user.getMediaListProgress().getMedia(0)).getCurrentSeason().toString());
@@ -69,7 +70,7 @@ public class HomePageView extends Composite implements IsWidget {
 	public void handleSearch() {
 		updateSearch();
 
-		RPC.searchService.seriesSearch(query, new AsyncCallback<List<Series>>() {
+		RPC.searchService.seriesSearch(query, new AsyncCallback<ArrayList<Series>>() {
 
 			@Override
 			public void onFailure(Throwable caught) {
@@ -78,7 +79,7 @@ public class HomePageView extends Composite implements IsWidget {
 			}
 
 			@Override
-			public void onSuccess(List<Series> results) {
+			public void onSuccess(ArrayList<Series> results) {
 				TV_Tracker.setView(new SearchResultsView(user, results));
 			}
 

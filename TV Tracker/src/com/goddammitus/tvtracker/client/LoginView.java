@@ -46,7 +46,7 @@ public class LoginView extends Composite implements IsWidget {
 		panel.add(lblUsername);
 		panel.setWidgetLeftWidth(lblUsername, 29.0, Unit.PX, 73.0, Unit.PX);
 		panel.setWidgetTopHeight(lblUsername, 87.0, Unit.PX, 15.0, Unit.PX);
-		
+
 		txtPassword = new PasswordTextBox();
 		txtPassword.setWidth("114px");
 		panel.add(txtPassword);
@@ -74,12 +74,12 @@ public class LoginView extends Composite implements IsWidget {
 		    		// TODO: display error (unknown user/password)
 		    	} else {
 		    		user = result;
-		    		
+
 		    		// Switch to next view
 		    		TV_Tracker.setView(new HomePageView(user));
 		    		//TV_Tracker.setView(new ExampleView());
 		    	}
-		        
+
 		    }
 
 		    @Override

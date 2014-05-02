@@ -21,6 +21,7 @@
 
   <!-- Other module inherits                                      -->
   <inherits name="com.tvtracker.model" />
+  <inherits name="com.omertron.thetvdbapi.model" />
 
   <!-- Specify the app entry point class.                         -->
   <entry-point class='com.goddammitus.tvtracker.client.TV_Tracker'/>

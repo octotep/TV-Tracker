@@ -1,5 +1,6 @@
 package com.goddammitus.tvtracker.server;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.goddammitus.tvtracker.client.APISearchService;
@@ -11,9 +12,10 @@ public class APISearchServiceImpl extends RemoteServiceServlet implements APISea
 	private static final long serialVersionUID = 1L;
 
 	@Override
-	public List<Series> seriesSearch(String series) {
+	public ArrayList<Series> seriesSearch(String series) {
+		System.out.println("The series query is: " + series);
 		ApiController controller = new ApiController();
-		List<Series> results = controller.searchSeries(series);
+		ArrayList<Series> results = controller.searchSeries(series);
 
 		for (Series found_series : results) {
 			System.out.println("Search Result: " + found_series);

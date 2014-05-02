@@ -12,7 +12,7 @@ import com.tvtracker.model.Login;
  */
 public class TV_Tracker implements EntryPoint {
 	private static IsWidget currentView;
-	
+
 	/**
 	 * This is the entry point method.
 	 */
@@ -23,12 +23,12 @@ public class TV_Tracker implements EntryPoint {
 
 		setView(view);
 	}
-	
+
 	public static void setView(IsWidget view) {
 		if (currentView != null) {
 			RootLayoutPanel.get().remove(currentView);
 		}
-		
+
 		RootLayoutPanel.get().add(view);
 		RootLayoutPanel.get().setWidgetLeftWidth(view, 0.0, Unit.PX, 1000.0, Unit.PX);
 		RootLayoutPanel.get().setWidgetTopHeight(view, 0.0, Unit.PX, 400.0, Unit.PX);
