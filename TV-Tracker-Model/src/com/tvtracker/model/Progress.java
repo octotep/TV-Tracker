@@ -28,8 +28,8 @@ public class Progress implements Serializable {
 	/*
 	 * initializes Progress -- uses Integers to track episode count and seasons
 	 */
-	public Progress(int id, Integer currentSeason, Integer episodesSeenInCurrentSeason, Integer episodesInCurrentSeason) {
-		this.id = id;
+	public Progress(Integer currentSeason, Integer episodesSeenInCurrentSeason, Integer episodesInCurrentSeason) {
+//		this.id = id;
 		this.episodesSeenInCurrentSeason = episodesSeenInCurrentSeason;
 		this.episodesInCurrentSeason = episodesInCurrentSeason;
 		this.currentSeason = currentSeason;

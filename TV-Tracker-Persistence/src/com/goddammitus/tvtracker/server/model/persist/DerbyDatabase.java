@@ -4,9 +4,11 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import com.tvtracker.model.Account;
@@ -15,9 +17,6 @@ import com.tvtracker.model.MediaList;
 import com.tvtracker.model.MediaListProgress;
 import com.tvtracker.model.MediaProgress;
 import com.tvtracker.model.Progress;
-
-import edu.ycp.cs320.booksdb.persist.DBUtil;
-import edu.ycp.cs320.booksdb.persist.DerbyDatabase.Transaction;
 
 public class DerbyDatabase implements IDatabase {
 	static {
@@ -78,7 +77,7 @@ public class DerbyDatabase implements IDatabase {
 	}
 
 	private Connection connect() throws SQLException {
-		Connection conn = DriverManager.getConnection("jdbc:derby:books.db;create=true");
+		Connection conn = DriverManager.getConnection("jdbc:derby:/home/octotep/db/accounts.db;create=true");
 
 		// Set autocommit to false to allow multiple the execution of
 		// multiple queries/statements as part of the same transaction.
@@ -88,13 +87,81 @@ public class DerbyDatabase implements IDatabase {
 	}
 
 	@Override
-	public Account login(String username, String password) {
+	public Account login(final String username, final String password) {
+		return executeTransaction(new Transaction<Account>() {
+			@Override
+			public Account execute(Connection conn) throws SQLException {
+				PreparedStatement stmt = null;
+				PreparedStatement stmt1 = null;
+				ResultSet resultSet = null;
+				ResultSet resultSet1 = null;
 
+				try {
+					// Get the account id
+					stmt = conn.prepareStatement(
+							"select id " +
+							"  from accounts " +
+							" where accounts.name = ? " +
+							"   and accounts.password = ?"
+					);
+					stmt.setString(1, username);
+					stmt.setString(2, password);
+
+					int id;
+					resultSet = stmt.executeQuery();
+					if (resultSet.next()) {
+						id = resultSet.getInt(1);
+					} else {
+						return null;
+					}
+
+					Account result = new Account(username, password);
+
+					// Get the account id
+					stmt1 = conn.prepareStatement(
+							"select * " +
+							"  from progresses " +
+							" where progresses.account_id = ? "
+					);
+					stmt1.setInt(1, id);
+					resultSet1 = stmt1.executeQuery();
+
+					int num_rows = 0;
+					while (resultSet1.next()) {
+						num_rows++;
+						loadProgress(result, resultSet1, 1);
+					}
+
+					if (num_rows > 0) {
+						return result;
+					} else {
+						return null;
+					}
+				} finally {
+					DBUtil.closeQuietly(resultSet);
+					DBUtil.closeQuietly(resultSet1);
+					DBUtil.closeQuietly(stmt);
+					DBUtil.closeQuietly(stmt1);
+				}
+			}
+
+
+		});
+	}
+
+	private void loadProgress(Account result, ResultSet resultSet, int i) {
+		try {
+			System.out.println("Row: " + resultSet.getString(3) + ", " + resultSet.getInt(4) + ", " + resultSet.getInt(5) + ", " + resultSet.getInt(6));
+			result.getMediaListProgress().addMedia(new Media(resultSet.getString(3)), resultSet.getInt(5), resultSet.getInt(6), resultSet.getInt(4));
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	@Override
 	public boolean checkIfAccountExists(String username) {
-
+		return false;
 	}
 
 	// The main method creates the database tables and loads the initial data.
@@ -110,109 +177,76 @@ public class DerbyDatabase implements IDatabase {
 	}
 
 	private void loadInitialData() {
-		ArrayList<Account> accountList;
-		Account dummyAccount;
-		Account otherDummyAccount;
-		accountList = new ArrayList<Account>();
+		executeTransaction(new Transaction<Boolean>() {
+			@Override
+			public Boolean execute(Connection conn) throws SQLException {
+				PreparedStatement insertAccount = null;
+				PreparedStatement insertProgress = null;
 
-		// Dummy show data to test list with
-		Media testMedia = new Media("Samurai Flamenco");
-		Map<Media, Progress> testMap = new HashMap<Media, Progress>();
-		testMap.put(testMedia, new Progress(1, 1, 22));
-		MediaList testMediaList = new MediaList();
-		testMediaList.addMedia(testMedia);
-		MediaProgress testMediaProgress = new MediaProgress(testMap);
-		MediaListProgress testMediaListProgress = new MediaListProgress(testMediaList, testMediaProgress);
+				try {
+					insertAccount = conn.prepareStatement("insert into accounts values (?, ?, ?)");
+					insertAccount.setInt(1, 0);
+					insertAccount.setString(2, "forry");
+					insertAccount.setString(3, "12345");
+					insertAccount.addBatch();
+					insertAccount.setInt(1, 1);
+					insertAccount.setString(2, "decker");
+					insertAccount.setString(3, "password1");
+					insertAccount.addBatch();
+					insertAccount.executeBatch();
 
-		dummyAccount =  new Account("Forry", "12345");
-		accountList.add(dummyAccount);
-		dummyAccount.setMediaListProgress(testMediaListProgress);
+					insertProgress = conn.prepareStatement("insert into progresses values (?, ?, ?, ?, ?, ?)");
+					insertProgress.setInt(1, 0);
+					insertProgress.setInt(2, 0);
+					insertProgress.setString(3, "Samurai Flamenco");
+					insertProgress.setInt(4, 1);
+					insertProgress.setInt(5, 1);
+					insertProgress.setInt(6, 22);
+					insertProgress.addBatch();
+					insertProgress.setInt(1, 1);
+					insertProgress.setInt(2, 1);
+					insertProgress.setString(3, "Chuck");
+					insertProgress.setInt(4, 5);
+					insertProgress.setInt(5, 8);
+					insertProgress.setInt(6, 13);
+					insertProgress.addBatch();
+					insertProgress.executeBatch();
 
-		// Dummy show data to test list with
-		Media testMedia2 = new Media("Chuck");
-		Map<Media, Progress> testMap2 = new HashMap<Media, Progress>();
-		testMap2.put(testMedia2, new Progress(5, 8, 13));
-		MediaList testMediaList2 = new MediaList();
-		testMediaList2.addMedia(testMedia2);
-		MediaProgress testMediaProgress2 = new MediaProgress(testMap2);
-		MediaListProgress testMediaListProgress2 = new MediaListProgress(testMediaList2, testMediaProgress2);
-
-		otherDummyAccount = new Account("Decker", "password1");
-		accountList.add(otherDummyAccount);
-		otherDummyAccount.setMediaListProgress(testMediaListProgress2);
-
-
+					return true;
+				} finally {
+					DBUtil.closeQuietly(insertProgress);
+					DBUtil.closeQuietly(insertAccount);
+				}
+			}
+		});
 	}
 
 	private void createTables() {
-		// TODO Auto-generated method stub
 		executeTransaction(new Transaction<Boolean>() {
 			@Override
 			public Boolean execute(Connection conn) throws SQLException {
 				PreparedStatement stmt1 = null;
 				PreparedStatement stmt2 = null;
-				PreparedStatement stmt3 = null;
-				PreparedStatement stmt4 = null;
-				PreparedStatement stmt5 = null;
-				PreparedStatement stmt6 = null;
 
 				try {
 					stmt1 = conn.prepareStatement(
-							"create table account (" +
+							"create table accounts (" +
 							"    id integer primary key," +
 							"    name varchar(50)," +
-							"    password varchar(50)," +
-							"    medialistprogress_id integer" +
+							"    password varchar(50)" +
 							")");
 					stmt1.executeUpdate();
 
 					stmt2 = conn.prepareStatement(
-							"create table medialistprogress (" +
-							"    id integer primary key," +
-							"    mediaprogress_id integer," +
-							"    medialist_id integer" +
+							"create table progresses (" +
+							"    entry_id integer primary key," +
+							"    account_id integer," +
+							"    title varchar(50)," +
+							"    current_season integer," +
+							"    episodes_watched integer," +
+							"    total_episodes integer" +
 							")");
 					stmt2.executeUpdate();
-
-					stmt3 = conn.prepareStatement(
-							"create table mediaprogress (" +
-							"    id integer primary key," +
-							"    media_id integer," +
-							"    progress_id integer" +
-							")");
-					stmt3.executeUpdate();
-
-					stmt4 = conn.prepareStatement(
-							"create table media (" +
-							"    id integer primary key," +
-							"    name varchar(50)" +
-							")");
-					stmt4.executeUpdate();
-
-					stmt5 = conn.prepareStatement(
-							"create table media (" +
-							"    id integer primary key," +
-							"    seen_in_season integer," +
-							"    current_season integer," +
-							"    episodes_in_season integer" +
-							")");
-					stmt5.executeUpdate();
-
-					stmt5 = conn.prepareStatement(
-							"create table media (" +
-							"    id integer primary key," +
-							"    seen_in_season integer," +
-							"    current_season integer," +
-							"    episodes_in_season integer" +
-							")");
-					stmt5.executeUpdate();
-
-					stmt6 = conn.prepareStatement(
-							"create table medialist (" +
-							"    id integer primary key," +
-							"    media_id integer" +
-							")");
-					stmt6.executeUpdate();
 
 					return true;
 				} finally {

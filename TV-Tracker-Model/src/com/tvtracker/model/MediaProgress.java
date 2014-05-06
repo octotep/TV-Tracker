@@ -25,8 +25,8 @@ public class MediaProgress implements Serializable {
 	/*
 	 * initializes the mediaMap
 	 */
-	public MediaProgress(int id, Map<Media, Progress> mediaMap) {
-		this.id = id;
+	public MediaProgress(Map<Media, Progress> mediaMap) {
+//		this.id = id;
 		this.mediaMap = new HashMap<Media, Progress>(mediaMap);
 	}
 

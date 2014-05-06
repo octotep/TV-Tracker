@@ -34,8 +34,8 @@ public class MediaList implements Serializable {
 	/*
 	 * returns the MediaList
 	 */
-	public MediaList getMediaList() {
-		return this;
+	public ArrayList<Media> getMediaList() {
+		return list;
 	}
 
 	/*

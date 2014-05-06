@@ -25,8 +25,8 @@ public class Media implements Serializable {
 	/*
 	 * creates name for this instance of Media
 	 */
-	public Media(int id, String name) {
-		this.id = id;
+	public Media(String name) {
+//		this.id = id;
 		this.name = name;
 	}
 

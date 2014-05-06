@@ -1,6 +1,7 @@
 package com.tvtracker.model;
 
 import java.io.Serializable;
+import java.io.ObjectInputStream.GetField;
 import java.util.HashMap;
 
 import org.omg.PortableServer.ID_ASSIGNMENT_POLICY_ID;
@@ -27,14 +28,14 @@ public class MediaListProgress implements Serializable {
 		this.mediaList = new MediaList();
 		//MediaProgress takes a Media and Progress object and combines them
 		//into a HashMap together, so Media can be tied to Progress
-		this.mediaProgress = new MediaProgress(0, new HashMap<Media, Progress>());
+		this.mediaProgress = new MediaProgress(new HashMap<Media, Progress>());
 	}
 
 	/*
 	 * sets MediaListProgress taking in a MediaList and MediaProgress object
 	 */
-	public MediaListProgress(int id, MediaList mediaList, MediaProgress mediaProgress) {
-		this.id = id;
+	public MediaListProgress(MediaList mediaList, MediaProgress mediaProgress) {
+//		this.id = id;
 		this.mediaList = mediaList;
 		this.mediaProgress = mediaProgress;
 	}
@@ -44,7 +45,7 @@ public class MediaListProgress implements Serializable {
 	 */
 	public void addMedia(Media media, int episodesSeenInCurrentSeason, int episodesInCurrentSeason, int currentSeason) {
 		mediaList.addMedia(media);
-		mediaProgress.addMedia(media, new Progress(media.getId(), currentSeason, episodesSeenInCurrentSeason, episodesInCurrentSeason));
+		mediaProgress.addMedia(media, new Progress(currentSeason, episodesSeenInCurrentSeason, episodesInCurrentSeason));
 	}
 
 	/*
@@ -73,6 +74,10 @@ public class MediaListProgress implements Serializable {
 	 */
 	public void setMediaProgress(MediaProgress mediaProgress) {
 		this.mediaProgress = mediaProgress;
+	}
+
+	public int getSize() {
+		return mediaList.getMediaList().size();
 	}
 
 	public int getId() {
