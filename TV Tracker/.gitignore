@@ -2,12 +2,11 @@
 /gwt-unitCache
 /test
 /.gwt
-<<<<<<< HEAD
-/bin
-=======
 /bin
 /war/WEB-INF/classes
 /war/WEB-INF/lib
 /war/WEB-INF/deploy
 /war/tv_tracker
->>>>>>> refs/remotes/forry/master
+
+# don't touch this!
+src/com/goddammitus/tvtracker/server/res/apikey.txt
