@@ -68,4 +68,10 @@ public class FakeDatabase implements IDatabase {
 
 		return false;
 	}
+
+	@Override
+	public boolean createAccount(String username, String password) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }

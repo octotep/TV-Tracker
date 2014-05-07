@@ -11,5 +11,8 @@ public interface LoginServiceAsync {
 
 	void checkIfAccountExists(String username,
 			AsyncCallback<Boolean> callback);
-	
+
+	void createAccount(String username, String password,
+			AsyncCallback<Boolean> callback);
+
 }

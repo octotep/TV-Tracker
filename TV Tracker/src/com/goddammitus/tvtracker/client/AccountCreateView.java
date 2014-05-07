@@ -71,13 +71,24 @@ public class AccountCreateView extends Composite implements IsWidget{
 		RPC.loginService.checkIfAccountExists(txtCreateUsername.getValue(), new AsyncCallback<Boolean>() {
 			@Override
 			public void onSuccess(Boolean result) {
-				// TODO everything
 				if (result == true) {
 					lblError.setText("That account already exists, pick another! ");
 					lblError.setVisible(true);
 				} else {
-					lblError.setText("You're good to go!");
-					lblError.setVisible(true);
+					lblError.setVisible(false);
+					RPC.loginService.createAccount(txtCreateUsername.getValue(), txtCreatePassword.getValue(), new AsyncCallback<Boolean>() {
+						@Override
+						public void onFailure(Throwable caught) {
+							lblError.setText("Couldn't add username to database");
+							lblError.setVisible(true);
+						}
+						@Override
+						public void onSuccess(Boolean result) {
+							// Hooray, we added a user to the database, go back to the login view
+							LoginView view = new LoginView();
+							TV_Tracker.setView(view);
+						}
+					});
 				}
 			}
 
