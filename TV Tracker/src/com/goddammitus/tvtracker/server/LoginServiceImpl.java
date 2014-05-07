@@ -18,13 +18,25 @@ public class LoginServiceImpl extends RemoteServiceServlet implements LoginServi
 
 		return acct;
 	}
-	
+
 	@Override
 	public boolean checkIfAccountExists(String username) {
 		LoginController controller = new LoginController();
-		
-		System.out.println("Account " + (controller.checkIfAccountExists(username) ? "found" : "not found"));
-		
+
 		return controller.checkIfAccountExists(username);
+	}
+
+	@Override
+	public boolean createAccount(String username, String password) {
+		LoginController controller = new LoginController();
+
+		return controller.createAccount(username, password);
+	}
+
+	@Override
+	public boolean addMedia(int account_id, String name, int currentSeason, int episodesWatched, int totalEpisodes) {
+		LoginController controller = new LoginController();
+
+		return controller.addMedia(account_id, name, currentSeason, episodesWatched, totalEpisodes);
 	}
 }
