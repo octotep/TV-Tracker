@@ -115,7 +115,7 @@ public class DerbyDatabase implements IDatabase {
 						return null;
 					}
 
-					Account result = new Account(username, password);
+					Account result = new Account(id, username, password);
 
 					// Get the account id
 					stmt1 = conn.prepareStatement(
@@ -292,6 +292,32 @@ public class DerbyDatabase implements IDatabase {
 					insertAccount = conn.prepareStatement("insert into accounts values (default, ?, ?)");
 					insertAccount.setString(1, username);
 					insertAccount.setString(2, password);
+					insertAccount.addBatch();
+					insertAccount.executeBatch();
+
+					return true;
+				} finally {
+					DBUtil.closeQuietly(insertAccount);
+				}
+			}
+		});
+	}
+
+	@Override
+	public boolean addMedia(final int account_id, final String name, final int currentSeason,
+			final int episodesWatched, final int totalEpisodes) {
+		return executeTransaction(new Transaction<Boolean>() {
+			@Override
+			public Boolean execute(Connection conn) throws SQLException {
+				PreparedStatement insertAccount = null;
+
+				try {
+					insertAccount = conn.prepareStatement("insert into progresses values (default, ?, ?, ?, ?, ?)");
+					insertAccount.setInt(1, account_id);
+					insertAccount.setString(2, name);
+					insertAccount.setInt(3, currentSeason);
+					insertAccount.setInt(4, episodesWatched);
+					insertAccount.setInt(5, totalEpisodes);
 					insertAccount.addBatch();
 					insertAccount.executeBatch();
 

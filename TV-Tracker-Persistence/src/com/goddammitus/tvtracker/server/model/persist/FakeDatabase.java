@@ -29,7 +29,7 @@ public class FakeDatabase implements IDatabase {
 		MediaProgress testMediaProgress = new MediaProgress(testMap);
 		MediaListProgress testMediaListProgress = new MediaListProgress(testMediaList, testMediaProgress);
 
-		dummyAccount =  new Account("Forry", "12345");
+		dummyAccount =  new Account(1, "Forry", "12345");
 		accountList.add(dummyAccount);
 		dummyAccount.setMediaListProgress(testMediaListProgress);
 
@@ -42,7 +42,7 @@ public class FakeDatabase implements IDatabase {
 		MediaProgress testMediaProgress2 = new MediaProgress(testMap2);
 		MediaListProgress testMediaListProgress2 = new MediaListProgress(testMediaList2, testMediaProgress2);
 
-		otherDummyAccount = new Account("Decker", "password1");
+		otherDummyAccount = new Account(2, "Decker", "password1");
 		accountList.add(otherDummyAccount);
 		otherDummyAccount.setMediaListProgress(testMediaListProgress2);
 	}
@@ -71,6 +71,13 @@ public class FakeDatabase implements IDatabase {
 
 	@Override
 	public boolean createAccount(String username, String password) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean addMedia(int account_id, String name, int currentSeason,
+			int episodesWatched, int totalEpisodes) {
 		// TODO Auto-generated method stub
 		return false;
 	}

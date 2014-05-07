@@ -58,12 +58,26 @@ public class HomePageView extends Composite implements IsWidget {
 		panel.add(btnLogout);
 		panel.setWidgetLeftWidth(btnLogout, 369.0, Unit.PX, 81.0, Unit.PX);
 		panel.setWidgetTopHeight(btnLogout, 2.0, Unit.PX, 30.0, Unit.PX);
+
+		Button btnAddMedia = new Button("Add Media");
+		btnAddMedia.addClickHandler(new ClickHandler() {
+			public void onClick(ClickEvent event) {
+				handleAddMedia();
+			}
+		});
+		panel.add(btnAddMedia);
+		panel.setWidgetLeftWidth(btnAddMedia, 369.0, Unit.PX, 81.0, Unit.PX);
+		panel.setWidgetTopHeight(btnAddMedia, 273.0, Unit.PX, 27.0, Unit.PX);
 	}
 
 	public void handleLogout() {
 		Session.clear();
 		LoginView view = new LoginView();
 		TV_Tracker.setView(view);
+	}
+
+	public void handleAddMedia() {
+		TV_Tracker.setView(new AddMediaView(user));
 	}
 
 	public void setModel(Login model) {

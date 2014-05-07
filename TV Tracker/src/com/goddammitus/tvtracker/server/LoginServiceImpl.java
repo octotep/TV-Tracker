@@ -34,4 +34,11 @@ public class LoginServiceImpl extends RemoteServiceServlet implements LoginServi
 
 		return controller.createAccount(username, password);
 	}
+
+	@Override
+	public boolean addMedia(int account_id, String name, int currentSeason, int episodesWatched, int totalEpisodes) {
+		LoginController controller = new LoginController();
+
+		return controller.addMedia(account_id, name, currentSeason, episodesWatched, totalEpisodes);
+	}
 }

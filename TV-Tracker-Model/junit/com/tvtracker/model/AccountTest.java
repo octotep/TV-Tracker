@@ -6,7 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * 
+ *
  * @authors Austin Forry, Daniel Muckerman, Chris Yealy, Austin Decker
  *
  */
@@ -14,13 +14,13 @@ import org.junit.Test;
 public class AccountTest {
 	private Account austin;
 	private MediaListProgress testProgress;
-	
+
 	@Before
 	public void setup() {
-		austin = new Account(null, null);
+		austin = new Account(1, null, null);
 		austin.setMediaListProgress(testProgress);
 	}
-	
+
 	@Test
 	public void testGetMediaListProgress() {
 		assertEquals(testProgress, austin.getMediaListProgress());
