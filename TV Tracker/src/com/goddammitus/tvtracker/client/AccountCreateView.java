@@ -63,6 +63,16 @@ public class AccountCreateView extends Composite implements IsWidget{
 		panel.add(lblError);
 		panel.setWidgetLeftWidth(lblError, 99.0, Unit.PX, 253.0, Unit.PX);
 		panel.setWidgetTopHeight(lblError, 269.0, Unit.PX, 15.0, Unit.PX);
+		
+		Button btnCancel = new Button("Cancel");
+		btnCancel.addClickHandler(new ClickHandler() {
+			public void onClick(ClickEvent event) {
+				handleCancel();
+			}
+		});
+		panel.add(btnCancel);
+		panel.setWidgetLeftWidth(btnCancel, 252.0, Unit.PX, 81.0, Unit.PX);
+		panel.setWidgetTopHeight(btnCancel, 208.0, Unit.PX, 30.0, Unit.PX);
 		lblError.setVisible(false);
 	}
 
@@ -98,5 +108,10 @@ public class AccountCreateView extends Composite implements IsWidget{
 				lblError.setVisible(true);
 			}
 		});
+	}
+	
+	public void handleCancel() {
+		LoginView view = new LoginView();
+		TV_Tracker.setView(view);
 	}
 }
