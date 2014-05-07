@@ -57,7 +57,7 @@ public class FakeDatabase implements IDatabase {
 		}
 		return null;
 	}
-	
+
 	@Override
 	public boolean checkIfAccountExists(String username) {
 		for(Account account:accountList) {
@@ -65,7 +65,13 @@ public class FakeDatabase implements IDatabase {
 				if(account.getName().equalsIgnoreCase(username))
 					return true;
 		}
-		
+
+		return false;
+	}
+
+	@Override
+	public boolean createAccount(String username, String password) {
+		// TODO Auto-generated method stub
 		return false;
 	}
 }

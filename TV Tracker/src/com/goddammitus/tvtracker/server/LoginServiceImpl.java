@@ -18,13 +18,20 @@ public class LoginServiceImpl extends RemoteServiceServlet implements LoginServi
 
 		return acct;
 	}
-	
+
 	@Override
 	public boolean checkIfAccountExists(String username) {
 		LoginController controller = new LoginController();
 		
-		System.out.println("Account " + (controller.checkIfAccountExists(username) ? "found" : "not found"));
+		//System.out.println("Success");
 		
 		return controller.checkIfAccountExists(username);
+	}
+
+	@Override
+	public boolean createAccount(String username, String password) {
+		LoginController controller = new LoginController();
+
+		return controller.createAccount(username, password);
 	}
 }

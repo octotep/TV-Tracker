@@ -1,7 +1,10 @@
 package com.tvtracker.model;
 
 import java.io.Serializable;
+import java.io.ObjectInputStream.GetField;
 import java.util.HashMap;
+
+import org.omg.PortableServer.ID_ASSIGNMENT_POLICY_ID;
 
 /**
  *
@@ -14,10 +17,10 @@ import java.util.HashMap;
  */
 public class MediaListProgress implements Serializable {
 	private static final long serialVersionUID = 1L;
-
+	private int id;
 	private MediaProgress mediaProgress;
 	private MediaList mediaList;
-	
+
 	/*
 	 * initializes mediaList and mediaProgress
 	 */
@@ -27,15 +30,16 @@ public class MediaListProgress implements Serializable {
 		//into a HashMap together, so Media can be tied to Progress
 		this.mediaProgress = new MediaProgress(new HashMap<Media, Progress>());
 	}
-	
+
 	/*
 	 * sets MediaListProgress taking in a MediaList and MediaProgress object
 	 */
 	public MediaListProgress(MediaList mediaList, MediaProgress mediaProgress) {
+//		this.id = id;
 		this.mediaList = mediaList;
 		this.mediaProgress = mediaProgress;
 	}
-	
+
 	/*
 	 * adds media to the MediaList then adds media and creates a new Progress object for it
 	 */
@@ -43,32 +47,44 @@ public class MediaListProgress implements Serializable {
 		mediaList.addMedia(media);
 		mediaProgress.addMedia(media, new Progress(currentSeason, episodesSeenInCurrentSeason, episodesInCurrentSeason));
 	}
-	
+
 	/*
 	 * return current mediaProgress
 	 */
 	public Progress currentProgress(Media media) {
 		return mediaProgress.getProgress(media);
 	}
-	
+
 	/*
 	 * return current media at index "number"
 	 */
 	public Media getMedia(int number) {
 		return this.mediaList.getMedia(number);
 	}
-	
+
 	/*
 	 * set current mediaList
 	 */
 	public void setMediaList(MediaList mediaList) {
 		this.mediaList = mediaList;
 	}
-	
+
 	/*
 	 * set current mediaProgress
 	 */
 	public void setMediaProgress(MediaProgress mediaProgress) {
 		this.mediaProgress = mediaProgress;
+	}
+
+	public int getSize() {
+		return mediaList.getMediaList().size();
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public int setId(int id) {
+		return this.id = id;
 	}
 }
