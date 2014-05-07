@@ -15,4 +15,8 @@ public class LoginController {
 	public boolean createAccount(String username, String password) {
 		return DatabaseProvider.getInstance().createAccount(username, password);
 	}
+
+	public boolean addMedia(int account_id, String name, int currentSeason, int episodesWatched, int totalEpisodes) {
+		return DatabaseProvider.getInstance().addMedia(account_id, name, currentSeason, episodesWatched, totalEpisodes);
+	}
 }

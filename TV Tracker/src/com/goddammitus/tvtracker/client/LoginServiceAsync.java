@@ -15,4 +15,6 @@ public interface LoginServiceAsync {
 	void createAccount(String username, String password,
 			AsyncCallback<Boolean> callback);
 
+	void addMedia(int account_id, String name, int currentSeason,
+			int episodesWatched, int totalEpisodes, AsyncCallback<Boolean> callback);
 }

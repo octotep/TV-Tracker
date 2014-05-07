@@ -30,8 +30,8 @@ public class Account implements Serializable {
 	/*
 	 * initializes an Account -- takes a username and password
 	 */
-	public Account(String name, String password) {
-//		this.id = id;
+	public Account(int id, String name, String password) {
+		this.id = id;
 		this.name = name;
 		this.password = password;
 		progress = new MediaListProgress(new MediaList(), new MediaProgress(Collections.<Media, Progress> emptyMap()));
