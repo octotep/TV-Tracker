@@ -160,8 +160,35 @@ public class DerbyDatabase implements IDatabase {
 	}
 
 	@Override
-	public boolean checkIfAccountExists(String username) {
-		return false;
+	public boolean checkIfAccountExists(final String username) {
+		return executeTransaction(new Transaction<Boolean>() {
+			@Override
+			public Boolean execute(Connection conn) throws SQLException {
+				PreparedStatement stmt = null;
+				ResultSet resultSet = null;
+
+				try {
+					// Get the account id
+					stmt = conn.prepareStatement(
+							"select id " +
+							"  from accounts " +
+							" where accounts.name = ? "
+					);
+					stmt.setString(1, username);
+
+					resultSet = stmt.executeQuery();
+					if (resultSet.next()) {
+						return true;
+					} else {
+						return false;
+					}
+
+				} finally {
+					DBUtil.closeQuietly(resultSet);
+					DBUtil.closeQuietly(stmt);
+				}
+			}
+		});
 	}
 
 	// The main method creates the database tables and loads the initial data.
