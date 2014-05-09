@@ -14,6 +14,7 @@ import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Button;
 import com.tvtracker.model.Account;
+import com.google.gwt.user.client.ui.HasHorizontalAlignment;
 
 public class AccountCreateView extends Composite implements IsWidget{
 	private TextBox txtCreateUsername;
@@ -60,10 +61,11 @@ public class AccountCreateView extends Composite implements IsWidget{
 		panel.setWidgetTopHeight(btnSubmit, 208.0, Unit.PX, 30.0, Unit.PX);
 
 		lblError = new Label("That account already exists, pick another! ");
+		lblError.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
 		panel.add(lblError);
-		panel.setWidgetLeftWidth(lblError, 99.0, Unit.PX, 253.0, Unit.PX);
-		panel.setWidgetTopHeight(lblError, 269.0, Unit.PX, 15.0, Unit.PX);
-		
+		panel.setWidgetLeftWidth(lblError, 83.0, Unit.PX, 318.0, Unit.PX);
+		panel.setWidgetTopHeight(lblError, 267.0, Unit.PX, 15.0, Unit.PX);
+
 		Button btnCancel = new Button("Cancel");
 		btnCancel.addClickHandler(new ClickHandler() {
 			public void onClick(ClickEvent event) {
@@ -77,6 +79,11 @@ public class AccountCreateView extends Composite implements IsWidget{
 	}
 
 	public void handleCreate() {
+		if (txtCreateUsername.getValue().isEmpty() || txtCreatePassword.getValue().isEmpty()) {
+			lblError.setText("You must supply both a username and password.");
+			lblError.setVisible(true);
+			return;
+		}
 		System.out.println(txtCreateUsername.getValue() + " loves java");
 		RPC.loginService.checkIfAccountExists(txtCreateUsername.getValue(), new AsyncCallback<Boolean>() {
 			@Override
@@ -109,7 +116,7 @@ public class AccountCreateView extends Composite implements IsWidget{
 			}
 		});
 	}
-	
+
 	public void handleCancel() {
 		LoginView view = new LoginView();
 		TV_Tracker.setView(view);
